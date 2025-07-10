@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  lint-and-test:
     runs-on: ubuntu-latest
     env:
       DJANGO_SETTINGS_MODULE: core.settings
@@ -24,11 +24,20 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          pip install black flake8 isort
+
+      - name: Run isort
+        run: |
+          isort --check --diff backend/
+
+      - name: Run black
+        run: |
+          black --check backend/
+
+      - name: Run flake8
+        run: |
+          flake8 backend/
 
       - name: Run migrations
         run: |
           python manage.py migrate
-
-      - name: Run tests
-        run: |
-          pytest
