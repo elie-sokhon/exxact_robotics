@@ -28,7 +28,7 @@ jobs:
 
       - name: Run isort
         run: |
-          isort --check --diff backend/
+          isort --check backend/
 
       - name: Run black
         run: |
