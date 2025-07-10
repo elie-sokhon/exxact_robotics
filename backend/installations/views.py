@@ -6,7 +6,7 @@ from .serializers import InstallationSerializer
 
 
 class InstallationViewSet(viewsets.ModelViewSet):
-    queryset = Installation.objects.all().order_by('gid')
+    queryset = Installation.objects.all().order_by("gid")
     serializer_class = InstallationSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ["codepostal", "statutseveso", "etatactivite"]
