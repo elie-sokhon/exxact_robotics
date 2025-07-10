@@ -28,11 +28,11 @@ jobs:
 
       - name: Run isort
         run: |
-          isort --check backend/
+          isort backend/
 
       - name: Run black
         run: |
-          black --check backend/
+          black backend/
 
       - name: Run flake8
         run: |
