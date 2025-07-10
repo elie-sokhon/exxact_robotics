@@ -9,6 +9,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      DJANGO_SETTINGS_MODULE: core.settings
+      PYTHONPATH: backend
 
     steps:
       - uses: actions/checkout@v2
@@ -25,9 +28,9 @@ jobs:
       - name: Run migrations
         run: |
           cd backend
-          DJANGO_SETTINGS_MODULE=core.settings python manage.py migrate
+          python manage.py migrate
 
       - name: Run tests
         run: |
           cd backend
-          DJANGO_SETTINGS_MODULE=core.settings pytest
+          pytest
